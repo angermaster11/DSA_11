@@ -60,7 +60,7 @@ private Node CreateTree(){
 }
  ```
 
-### Find Code 
+### Find Element in Tree 
 ```java 
 private boolean find(Node nn, int item){
         if(nn == null){
@@ -76,7 +76,7 @@ private boolean find(Node nn, int item){
 ```
 - Take or (||) of left and right subtree.
 
-### Max Code 
+### Maximum of Tree 
 ```java 
 private int max(Node nn){
         if(nn == null){
@@ -101,3 +101,4 @@ private int height(Node nn){
         return Math.max(lh,rh) + 1;
     }
 ```
+- Take max of left and right subtree then add 1.
