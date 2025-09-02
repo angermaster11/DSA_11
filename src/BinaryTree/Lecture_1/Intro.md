@@ -59,3 +59,45 @@ private Node CreateTree(){
     Display(nn.right);
 }
  ```
+
+### Find Code 
+```java 
+private boolean find(Node nn, int item){
+        if(nn == null){
+            return false;
+        }
+        if(nn.val == item){
+            return true;
+        }
+        boolean left = find(nn.left,item);
+        boolean right = find(nn.right,item);
+        return left || right;
+    }
+```
+- Take or (||) of left and right subtree.
+
+### Max Code 
+```java 
+private int max(Node nn){
+        if(nn == null){
+            return Integer.MIN_VALUE;
+        }
+        int lmax = max(nn.left);
+        int rmax = max(nn.right);
+        return Math.max(nn.val,Math.max(lmax,rmax));
+    }
+    
+```
+- Take maximum of left,right and root.
+
+### Height of Tree
+```java 
+private int height(Node nn){
+        if(nn == null){
+            return -1;
+        }
+        int lh = height(nn.left);
+        int rh = height(nn.right);
+        return Math.max(lh,rh) + 1;
+    }
+```
