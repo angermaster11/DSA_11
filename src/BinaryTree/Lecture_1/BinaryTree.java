@@ -1,6 +1,6 @@
 package BinaryTree.Lecture_1;
 
-import java.util.Scanner;
+import java.util.*;
 
 public class BinaryTree {
     class Node {
@@ -10,10 +10,10 @@ public class BinaryTree {
     }
     private Node root;
     Scanner sc = new Scanner(System.in);
-
     public BinaryTree(){
         root = CreateTree();
     }
+
     private Node CreateTree(){
         int item = sc.nextInt();
         Node nn = new Node();
@@ -28,66 +28,26 @@ public class BinaryTree {
         }
         return nn;
     }
-
-    private void Display(Node nn){
-        if(nn == null){
-            return;
-        }
-        String str = "<--"+nn.val+"-->";
-        if(nn.left!=null){
-            str = nn.left.val+str;
-        }else {
-            str = "."+str;
-        }
-        if(nn.right!=null){
-            str = str + nn.right.val;
-        }else {
-            str = str+".";
-        }
-        System.out.println(str);
-        Display(nn.left);
-        Display(nn.right);
-    }
     public void Display(){
         Display(root);
     }
-
-    public boolean find(int item){
-        return find(root,item);
-    }
-    private boolean find(Node nn, int item){
-        if(nn == null){
-            return false;
+    private void Display(Node nn){
+        if(nn==null){
+            return;
         }
-        if(nn.val == item){
-            return true;
+        String s = "<--"+nn.val+"-->";
+        if(nn.left!=null){
+            s = nn.left.val + s;
+        }else {
+            s = "."+s;
         }
-        boolean left = find(nn.left,item);
-        boolean right = find(nn.right,item);
-        return left || right;
-    }
-
-    public int max(){
-        return max(root);
-    }
-    private int max(Node nn){
-        if(nn == null){
-            return Integer.MIN_VALUE;
+        if(nn.right!=null){
+            s = s + nn.right.val ;
+        }else {
+            s = s +".";
         }
-        int lmax = max(nn.left);
-        int rmax = max(nn.right);
-        return Math.max(nn.val,Math.max(lmax,rmax));
-    }
-
-    public int height(){
-        return height(root);
-    }
-    private int height(Node nn){
-        if(nn == null){
-            return -1;
-        }
-        int lh = height(nn.left);
-        int rh = height(nn.right);
-        return Math.max(lh,rh) + 1;
+        System.out.println(s);
+        Display(nn.left);
+        Display(nn.right);
     }
 }
