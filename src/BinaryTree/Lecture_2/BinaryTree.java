@@ -1,6 +1,6 @@
 package BinaryTree.Lecture_2;
 
-import java.util.Scanner;
+import java.util.*;
 
 public class BinaryTree {
     class Node {
@@ -133,4 +133,41 @@ public class BinaryTree {
 
     // level order traversal ---
     // very important
+    public void LevelOrder(){
+        Queue<Node> q = new LinkedList<>();
+        q.add(root);
+        while (!q.isEmpty()){
+            Node nn = q.poll();
+            System.out.print(nn.val+" ");
+            if(nn.left!=null){
+                q.add(nn.left);
+            }
+            if(nn.right!=null){
+                q.add(nn.right);
+            }
+
+        }
+        System.out.println();
+    }
+    public List<List<Integer>> LevelOrderTraversal(){
+        List<List<Integer>> results = new ArrayList<>();
+        Queue<Node> q = new LinkedList<>();
+        q.add(root);
+        while (!q.isEmpty()){
+            List<Integer> temp = new ArrayList<>();
+            int size = q.size();
+            for(int i=0;i<size;i++){
+                Node t = q.poll();
+                temp.add(t.val);
+                if(t.left!=null){
+                    q.add(t.left);
+                }
+                if(t.right!=null){
+                    q.add(t.right);
+                }
+            }
+            results.add(temp);
+        }
+        return results;
+    }
 }
